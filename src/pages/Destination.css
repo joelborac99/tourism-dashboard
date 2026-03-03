@@ -1,0 +1,30 @@
+.Main-Cont {
+  width: 100vw;
+  height: 100vh;
+  background-color: chocolate;
+  gap: 2px;
+  display: flex;
+  justify-content: center;
+}
+.CC {
+  width: 50%;
+  background-color: aqua;
+}
+.num2 {
+  overflow: auto;
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+  align-items: center;
+  padding-left: 20px;
+}
+.num2 img {
+  height: 400px;
+  width: 300px;
+  transition: 0.3s ease;
+}
+.num2 img:hover {
+  cursor: pointer;
+
+  width: 400px;
+}
