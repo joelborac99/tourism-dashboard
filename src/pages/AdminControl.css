@@ -1,0 +1,627 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ══ Layout ══════════════════════════════════════════════════ */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #09090f;
+  font-family: "Syne", sans-serif;
+  color: #ddd8f0;
+}
+
+/* ══ Sidebar ═════════════════════════════════════════════════ */
+.admin-sidebar {
+  width: 230px;
+  min-height: 100vh;
+  background: #0e0e18;
+  border-right: 1px solid rgba(139, 124, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0.75rem;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.admin-sidebar.collapsed {
+  width: 64px;
+}
+
+/* Brand */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0.5rem 1rem;
+  overflow: hidden;
+}
+.brand-gem {
+  font-size: 1.6rem;
+  color: #8b7cff;
+  flex-shrink: 0;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(139, 124, 255, 0.6));
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #fff;
+}
+.brand-sub {
+  font-size: 0.65rem;
+  color: #5050a0;
+  letter-spacing: 1.5px;
+  text-transform: lowercase;
+  font-family: "DM Mono", monospace;
+}
+
+/* Divider */
+.sidebar-divider {
+  height: 1px;
+  background: rgba(139, 124, 255, 0.08);
+  margin: 0.5rem 0;
+}
+
+/* Nav */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  color: #6060a0;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  text-align: left;
+}
+.sidebar-item:hover {
+  background: rgba(139, 124, 255, 0.08);
+  color: #c0b8ff;
+}
+.sidebar-item.active {
+  background: rgba(139, 124, 255, 0.14);
+  color: #fff;
+}
+
+.item-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  transition: color 0.18s;
+}
+.sidebar-item.active .item-icon {
+  color: #8b7cff;
+}
+
+.item-label {
+  flex: 1;
+}
+
+.item-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8b7cff;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(139, 124, 255, 0.8);
+}
+
+/* Footer */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-item.logout:hover {
+  background: rgba(255, 80, 80, 0.1);
+  color: #ff7070;
+}
+.sidebar-item.logout:hover .item-icon {
+  color: #ff7070;
+}
+
+.collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  color: #5050a0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  transition: all 0.18s;
+  width: 100%;
+}
+.collapse-btn:hover {
+  color: #8b7cff;
+  background: rgba(139, 124, 255, 0.08);
+}
+
+/* ══ Main Content ════════════════════════════════════════════ */
+.admin-main {
+  flex: 1;
+  padding: 2rem 2.5rem 4rem;
+  min-width: 0;
+  position: relative;
+}
+
+/* Toast */
+.admin-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+.admin-toast.success {
+  background: #0f2018;
+  color: #6effa0;
+  border: 1px solid #1e4a2e;
+}
+.admin-toast.error {
+  background: #20100f;
+  color: #ff7070;
+  border: 1px solid #4a1e1e;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Header */
+.admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.admin-section-eyebrow {
+  font-size: 0.7rem;
+  font-family: "DM Mono", monospace;
+  color: #8b7cff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.admin-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #fff 40%, #8b7cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.admin-stat {
+  text-align: right;
+  background: rgba(139, 124, 255, 0.07);
+  border: 1px solid rgba(139, 124, 255, 0.18);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+}
+.stat-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #8b7cff;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: #6060a0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Toolbar */
+.admin-toolbar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  align-items: center;
+}
+.admin-search-wrap {
+  flex: 1;
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5050a0;
+  font-size: 1.15rem;
+}
+.admin-search {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 0.72rem 1rem 0.72rem 2.8rem;
+  color: #ddd8f0;
+  font-family: "Syne", sans-serif;
+  font-size: 0.88rem;
+  transition: border-color 0.2s;
+}
+.admin-search:focus {
+  outline: none;
+  border-color: rgba(139, 124, 255, 0.45);
+}
+.admin-search::placeholder {
+  color: #40406a;
+}
+
+.admin-add-btn {
+  background: #8b7cff;
+  color: #fff;
+  border: none;
+  padding: 0.72rem 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.admin-add-btn:hover {
+  background: #7a6bee;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(139, 124, 255, 0.35);
+}
+
+/* Table */
+.admin-table-wrap {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table thead tr {
+  background: rgba(139, 124, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.admin-table th {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #50508a;
+}
+.admin-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.15s;
+}
+.admin-row:last-child {
+  border-bottom: none;
+}
+.admin-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+.admin-table td {
+  padding: 0.9rem 1.2rem;
+  font-size: 0.88rem;
+}
+
+.admin-id {
+  font-family: "DM Mono", monospace;
+  color: #40406a;
+  font-size: 0.78rem;
+}
+.user-avatar-name {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b7cff, #5540ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+.user-email {
+  color: #7070a8;
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem;
+}
+.user-date {
+  color: #50508a;
+  font-size: 0.8rem;
+}
+
+.action-btns {
+  display: flex;
+  gap: 0.45rem;
+}
+.btn-edit {
+  background: rgba(139, 124, 255, 0.1);
+  color: #8b7cff;
+  border: 1px solid rgba(139, 124, 255, 0.22);
+  padding: 0.38rem 0.85rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.18s;
+}
+.btn-edit:hover {
+  background: rgba(139, 124, 255, 0.22);
+}
+.btn-delete {
+  background: rgba(255, 80, 80, 0.07);
+  color: #ff6060;
+  border: 1px solid rgba(255, 80, 80, 0.18);
+  padding: 0.38rem 0.85rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.18s;
+}
+.btn-delete:hover {
+  background: rgba(255, 80, 80, 0.18);
+}
+
+/* States */
+.admin-loading,
+.admin-error,
+.admin-empty {
+  padding: 4rem;
+  text-align: center;
+  color: #50508a;
+}
+.admin-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid rgba(139, 124, 255, 0.12);
+  border-top-color: #8b7cff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.admin-error {
+  color: #ff6060;
+}
+
+/* Placeholder */
+.admin-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 1rem;
+  color: #50508a;
+}
+.ph-icon {
+  font-size: 3rem;
+  color: rgba(139, 124, 255, 0.3);
+}
+.admin-placeholder h2 {
+  font-size: 1.4rem;
+  color: #8080b8;
+}
+.admin-placeholder p {
+  font-size: 0.9rem;
+  color: #40406a;
+}
+
+/* ══ Modals ══════════════════════════════════════════════════ */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.admin-modal {
+  background: #111120;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  animation: popIn 0.25s ease;
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.admin-modal h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.admin-modal label {
+  display: block;
+  font-size: 0.72rem;
+  color: #50508a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+.admin-modal label:first-of-type {
+  margin-top: 0;
+}
+.admin-modal input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 0.68rem 1rem;
+  color: #ddd8f0;
+  font-family: "Syne", sans-serif;
+  font-size: 0.88rem;
+  transition: border-color 0.2s;
+}
+.admin-modal input:focus {
+  outline: none;
+  border-color: rgba(139, 124, 255, 0.5);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+  justify-content: flex-end;
+}
+.btn-cancel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #9090c0;
+  padding: 0.62rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all 0.18s;
+}
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+.btn-save {
+  background: #8b7cff;
+  border: none;
+  color: #fff;
+  padding: 0.62rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.18s;
+}
+.btn-save:hover {
+  background: #7a6bee;
+}
+
+/* Delete modal */
+.delete-modal {
+  text-align: center;
+}
+.delete-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.delete-modal h2 {
+  margin-bottom: 0.5rem;
+}
+.delete-modal p {
+  color: #7070a0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.delete-modal .modal-actions {
+  justify-content: center;
+}
+.btn-delete-confirm {
+  background: #b03030;
+  border: none;
+  color: #fff;
+  padding: 0.62rem 1.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.18s;
+}
+.btn-delete-confirm:hover {
+  background: #962828;
+}

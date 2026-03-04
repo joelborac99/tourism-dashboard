@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Navbar from "../components/Navbar";
 import "./Dashboard.css";
 
 const months = ["Jan", "Feb", "Mar", "May", "Jul", "Sep", "Sep", "Nov", "Dec"];
-const line1 = [38, 42, 40, 48, 52, 55, 60, 65, 72]; // International (green)
-const line2 = [28, 30, 29, 35, 38, 42, 46, 50, 55]; // Domestic (blue)
+const line1 = [38, 42, 40, 48, 52, 55, 60, 65, 72];
+const line2 = [28, 30, 29, 35, 38, 42, 46, 50, 55];
 
 const destinations = [
   { label: "Beach", value: 32 },
@@ -53,7 +54,7 @@ function donutSegments(data, cx, cy, outerR, innerR) {
 }
 
 export default function Dashboard() {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -67,13 +68,14 @@ export default function Dashboard() {
 
   return (
     <div className="db-wrapper">
-      {/* ── HEADER ── */}
+      {/* ── SHARED NAVBAR (same as Home page) ── */}
+      <Navbar />
 
-      {/* ── MAIN GRID ── */}
+      {/* ── MAIN CONTENT ── */}
       <main className="db-main">
         {/* TOP ROW */}
         <div className="db-top-row">
-          {/* STAT CARDS — left column */}
+          {/* STAT CARDS */}
           <div className="db-stats-col">
             <div className="db-card db-stat-card">
               <div className="db-stat-number">25,386</div>
@@ -87,7 +89,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* LINE CHART — center */}
+          {/* LINE CHART */}
           <div className="db-card db-chart-card">
             <h3 className="db-card-title">Tourists Over Time</h3>
             <div className="db-chart-area">
@@ -96,7 +98,6 @@ export default function Dashboard() {
                 viewBox="0 0 540 180"
                 preserveAspectRatio="none"
               >
-                {/* Gridlines */}
                 {[0, 45, 90, 135, 180].map((y, i) => (
                   <line
                     key={i}
@@ -108,7 +109,6 @@ export default function Dashboard() {
                     strokeWidth="1"
                   />
                 ))}
-                {/* Green line */}
                 <polyline
                   points={polyPoints(line1, 540, 170, minV, maxV)}
                   fill="none"
@@ -117,7 +117,6 @@ export default function Dashboard() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-                {/* Blue line */}
                 <polyline
                   points={polyPoints(line2, 540, 170, minV, maxV)}
                   fill="none"
@@ -126,7 +125,6 @@ export default function Dashboard() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-                {/* Green dots */}
                 {line1.map((v, i) => (
                   <circle
                     key={i}
@@ -136,7 +134,6 @@ export default function Dashboard() {
                     fill="#22c55e"
                   />
                 ))}
-                {/* Blue dots */}
                 {line2.map((v, i) => (
                   <circle
                     key={i}
@@ -147,7 +144,6 @@ export default function Dashboard() {
                   />
                 ))}
               </svg>
-              {/* X labels */}
               <div className="db-x-labels">
                 {months.map((m) => (
                   <span key={m}>{m}</span>
@@ -156,7 +152,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* GROWTH — right column */}
+          {/* GROWTH */}
           <div className="db-card db-growth-card">
             <div className="db-growth-number">+17%</div>
             <div className="db-growth-label">Growth</div>
@@ -174,7 +170,6 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        {/* end top-row */}
 
         {/* BOTTOM ROW */}
         <div className="db-bottom-row">
@@ -204,35 +199,30 @@ export default function Dashboard() {
             <h3 className="db-card-title">Visitors by Region</h3>
             <div className="db-map-wrap">
               <svg viewBox="0 0 500 310" className="db-map-svg">
-                {/* US map base */}
                 <path
                   d="M75,55 L415,55 L425,75 L435,115 L415,178 L375,198 L335,208 L295,218 L255,213 L215,218 L175,208 L135,198 L95,178 L65,145 L55,108 Z"
                   fill="#dbeafe"
                   stroke="#93c5fd"
                   strokeWidth="1"
                 />
-                {/* Florida */}
                 <path
                   d="M315,208 L325,228 L320,258 L310,268 L300,253 L305,228 Z"
                   fill="#bfdbfe"
                   stroke="#93c5fd"
                   strokeWidth="0.8"
                 />
-                {/* Highlighted West */}
                 <path
                   d="M75,55 L195,55 L205,75 L195,158 L155,178 L115,168 L75,145 L55,108 Z"
                   fill="#3b82f6"
                   stroke="#2563eb"
                   strokeWidth="1"
                 />
-                {/* Highlighted South */}
                 <path
                   d="M175,158 L255,158 L265,178 L255,208 L215,218 L175,208 L155,178 Z"
                   fill="#93c5fd"
                   stroke="#60a5fa"
                   strokeWidth="0.8"
                 />
-                {/* State dividers */}
                 <line
                   x1="195"
                   y1="55"
@@ -298,7 +288,13 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        {/* end bottom-row */}
+
+        {/* LOGOUT */}
+        <div className="db-logout-row">
+          <button className="db-logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </main>
     </div>
   );

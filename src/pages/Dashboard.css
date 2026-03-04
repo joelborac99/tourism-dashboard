@@ -12,122 +12,35 @@
 
 .db-wrapper {
   min-height: 100vh;
-  background: #f8f9fb;
+  background: #6c6d6f;
   font-family: "Inter", sans-serif;
   color: #0f172a;
 }
 
 /* ========================================= */
-/* =============== HEADER ================== */
+/* ======= LOGOUT BUTTON & ROW ============= */
 /* ========================================= */
 
-.db-header {
-  background: #fff;
-  border-bottom: 1.5px solid #e8eaed;
-  padding: 0 32px;
-  height: 64px;
+.db-logout-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  gap: 16px;
-}
-
-.db-logo h1 {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #0f172a;
-  letter-spacing: -0.5px;
-  white-space: nowrap;
-}
-
-/* Nav */
-.db-nav {
-  display: flex;
-  gap: 4px;
-}
-
-.db-nav-btn {
-  background: none;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 8px;
-  font-family: "Inter", sans-serif;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: #64748b;
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    color 0.15s;
-}
-
-.db-nav-btn:hover,
-.db-nav-btn.active {
-  background: #f1f5f9;
-  color: #0f172a;
-}
-
-/* Right side */
-.db-header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.db-user-info {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #374151;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 8px;
-  transition: background 0.15s;
-}
-
-.db-user-info:hover {
-  background: #f1f5f9;
-}
-.db-caret {
-  font-size: 0.7rem;
-  color: #94a3b8;
-}
-
-.db-avatar-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: #f1f5f9;
-  border: 1.5px solid #e2e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #94a3b8;
-}
-
-.db-avatar-icon svg {
-  width: 18px;
-  height: 18px;
+  justify-content: flex-end;
+  padding-top: 4px;
 }
 
 .db-logout-btn {
   background: none;
   border: 1.5px solid #e2e8f0;
-  padding: 6px 14px;
+  padding: 8px 20px;
   border-radius: 8px;
   font-family: "Inter", sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: #64748b;
   cursor: pointer;
   transition:
     background 0.15s,
-    color 0.15s;
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .db-logout-btn:hover {
@@ -141,7 +54,7 @@
 /* ========================================= */
 
 .db-main {
-  padding: 24px 28px;
+  padding: 84px 28px 24px; /* 84px = 60px navbar + 24px breathing room */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -515,7 +428,7 @@
   }
 
   .db-main {
-    padding: 16px;
+    padding: 76px 16px 16px;
     gap: 14px;
   }
 

@@ -8,8 +8,8 @@ import Destination from "./pages/Destination";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AdminControl from "./pages/AdminControl";
 import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./context/ProtectedRoute";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<AdminControl />} />
           <Route
             path="/*"
             element={
