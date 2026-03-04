@@ -1,96 +1,194 @@
-/* NAVBAR */
+/* ========================================= */
+/* ============== NAVBAR =================== */
+/* ========================================= */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #127bd138;
-  position: relative;
+  padding: 0 30px;
+  height: 68px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: background 0.3s;
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 30px;
+  font-weight: 800;
+  font-size: 22px;
+  color: white;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
+
+.logo-icon {
+  color: #0bdbca;
+}
+
+/* ========================================= */
+/* ============== NAV LINKS ================ */
+/* ========================================= */
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 32px;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
 .Linkin {
   text-decoration: none;
-  color: black;
-  transition: 0.3s ease;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    color 0.3s,
+    transform 0.2s;
 }
+
 .Linkin:hover {
-  transform: scale(1.1);
+  color: #0bdbca;
+  transform: scale(1.05);
 }
+
+/* ========================================= */
+/* ============== NAV RIGHT ================ */
+/* ========================================= */
+
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  border: 1px solid #137c3a;
-  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition:
+    background 0.2s,
+    border 0.2s;
+}
+
+.search-box:focus-within {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 .search-box input {
   border: none;
   outline: none;
   background: transparent;
+  color: white;
+  font-size: 13px;
+  width: 140px;
 }
 
-/* Hamburger */
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-box svg {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+
+/* ========================================= */
+/* ============== HAMBURGER ================ */
+/* ========================================= */
 
 .menu-icon {
   display: none;
   font-size: 24px;
   cursor: pointer;
-  transition: 0.3s;
+  color: white;
+  transition: transform 0.3s;
+  padding: 4px;
 }
+
 .menu-icon:hover {
   transform: scale(1.1);
 }
 
-/* ============================ */
-/* MOBILE NAVBAR */
-/* ============================ */
+/* ========================================= */
+/* ============== MOBILE =================== */
+/* ========================================= */
 
 @media (max-width: 768px) {
   .navbar {
-    background-color: white;
+    background-color: rgba(10, 20, 50, 0.92);
+    padding: 0 20px;
+    height: 60px;
   }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  /* Dropdown menu */
   .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 20px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
     flex-direction: column;
-    background: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(10, 20, 50, 0.97);
+    backdrop-filter: blur(20px);
+    padding: 24px 30px 30px;
+    gap: 0;
     display: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-links.active {
     display: flex;
   }
 
-  .menu-icon {
+  .Linkin {
     display: block;
+    padding: 14px 0;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .Linkin:last-child {
+    border-bottom: none;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .search-box {
     display: none;
+  }
+}
+
+/* ========================================= */
+/* ============== SMALL PHONE ============== */
+/* ========================================= */
+
+@media (max-width: 360px) {
+  .navbar {
+    padding: 0 14px;
+  }
+
+  .logo {
+    font-size: 16px;
   }
 }

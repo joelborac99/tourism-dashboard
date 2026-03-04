@@ -1,45 +1,56 @@
-/* GLOBAL */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* ========================================= */
+/* ============== GLOBAL =================== */
+/* ========================================= */
+
 body {
   background: #f6f3f3;
   padding: 0;
+  margin: 0;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  margin: 0;
 }
 
-/* HERO */
+/* ========================================= */
+/* ============== CONTAINER ================ */
+/* ========================================= */
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================= */
+/* ============== HERO ===================== */
+/* ========================================= */
 
 .hero {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 0;
   gap: 40px;
   background-image: url("https://mediaim.expedia.com/destination/2/15ceb9cf4d93eb312405aecbe76f3d9f.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  height: 100vh;
+  min-height: 100vh;
+  padding: 80px 40px 40px;
 }
 
-/* Container */
-
-.main {
-  width: 100vw;
-  height: 100vh;
-  margin-top: 0;
-}
-/* LEFT SIDE */
+/* ========================================= */
+/* ============== LEFT SIDE ================ */
+/* ========================================= */
 
 .hero-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  flex: 1;
+  max-width: 600px;
 }
 
 .bg-text {
@@ -49,6 +60,7 @@ body {
   padding: 0;
   margin: 0;
   margin-top: 20px;
+  line-height: 1;
 }
 
 .hero-left h1 {
@@ -56,6 +68,7 @@ body {
   margin: 0;
   text-align: center;
 }
+
 .hero-left h1 span {
   font-size: 85px;
   font-weight: 800;
@@ -63,6 +76,7 @@ body {
   letter-spacing: 2px;
   margin-top: 0;
   padding: 0;
+  line-height: 1;
 }
 
 .light-text {
@@ -71,6 +85,7 @@ body {
   font-weight: 600;
   margin-bottom: 30px;
   margin-top: 0;
+  line-height: 1;
 }
 
 .hero-left p {
@@ -82,7 +97,12 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
+  max-width: 500px;
 }
+
+/* ========================================= */
+/* ============== BUTTON =================== */
+/* ========================================= */
 
 .btn {
   background: #0bdbca6f;
@@ -95,11 +115,14 @@ body {
   margin-bottom: 40px;
   transition: 0.3s ease;
 }
+
 .btn:hover {
   transform: scale(1.1);
 }
 
-/* SOCIALS */
+/* ========================================= */
+/* ============== SOCIALS ================== */
+/* ========================================= */
 
 .socials {
   display: flex;
@@ -114,12 +137,15 @@ body {
   border-radius: 50%;
   font-size: 34px;
 }
+
 .socials svg:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
-/* RIGHT SIDE */
+/* ========================================= */
+/* ============== RIGHT SIDE =============== */
+/* ========================================= */
 
 .hero-right {
   position: relative;
@@ -127,8 +153,6 @@ body {
   height: 500px;
   flex-shrink: 0;
 }
-
-/* BIG BLOB */
 
 .blob {
   width: 100%;
@@ -152,8 +176,6 @@ body {
   object-fit: cover;
   border-radius: inherit;
 }
-
-/* DECORATIONS */
 
 .small-blob {
   position: absolute;
@@ -188,20 +210,31 @@ body {
 /* ============ RESPONSIVE ================= */
 /* ========================================= */
 
-/* TABLET */
-
-@media (max-width: 1024px) {
-  body {
-    padding: 30px 40px;
+/* LARGE DESKTOP — 1280px+ */
+@media (min-width: 1280px) {
+  .hero {
+    padding: 80px 80px 60px;
   }
+}
 
+/* DESKTOP — up to 1280px */
+@media (max-width: 1280px) {
+  .hero-right {
+    width: 480px;
+    height: 440px;
+  }
+}
+
+/* TABLET — up to 1024px */
+@media (max-width: 1024px) {
   .hero {
     gap: 30px;
+    padding: 80px 30px 40px;
   }
 
   .hero-right {
-    width: 450px;
-    height: 420px;
+    width: 400px;
+    height: 380px;
   }
 
   .hero-left h1 span {
@@ -214,17 +247,14 @@ body {
   }
 }
 
-/* MOBILE */
-
+/* SMALL TABLET / LARGE PHONE — up to 768px */
 @media (max-width: 768px) {
-  body {
-    padding: 20px;
-  }
-
   .hero {
     flex-direction: column;
     text-align: center;
-    margin-top: 30px;
+    padding: 100px 20px 60px;
+    gap: 40px;
+    min-height: 100svh;
   }
 
   .hero-left {
@@ -246,6 +276,8 @@ body {
   .hero-left p {
     font-size: 14px;
     margin: 20px auto;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .socials {
@@ -254,27 +286,55 @@ body {
 
   .hero-right {
     width: 100%;
-    max-width: 350px;
+    max-width: 360px;
     height: 320px;
-    margin-top: 30px;
+    margin: 0 auto;
   }
 
-  /* Hide extra decorative shapes on small screens */
   .small-blob,
   .dot {
     display: none;
   }
 }
 
-/* VERY SMALL PHONES */
-
+/* PHONE — up to 480px */
 @media (max-width: 480px) {
+  .hero {
+    padding: 90px 16px 50px;
+  }
+
   .hero-left h1 span {
-    font-size: 45px;
+    font-size: 42px;
   }
 
   .bg-text,
   .light-text {
     font-size: 28px;
+  }
+
+  .hero-left p {
+    font-size: 13px;
+  }
+
+  .hero-right {
+    max-width: 300px;
+    height: 270px;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+}
+
+/* VERY SMALL PHONE — up to 360px */
+@media (max-width: 360px) {
+  .hero-left h1 span {
+    font-size: 36px;
+  }
+
+  .bg-text,
+  .light-text {
+    font-size: 24px;
   }
 }
