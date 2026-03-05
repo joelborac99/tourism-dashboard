@@ -23,8 +23,8 @@ const commitments = [
         />
       </svg>
     ),
-    title: "Content",
-    text: "We believe that great content should speak for itself and we take pride in helping all photographers showcase their incredible work — it's at the core of everything we do.",
+    title: "Beaches",
+    text: "San Narciso is known for wide sandy shores and surf-friendly waves, especially at Crystal Beach.",
   },
   {
     icon: (
@@ -43,8 +43,8 @@ const commitments = [
         />
       </svg>
     ),
-    title: "Growth",
-    text: "The creative journey doesn't have an end; there's always room for improvement. We're committed to creating a platform that challenges you to keep learning, and step outside of your comfort zone.",
+    title: "Sunsets",
+    text: "The coastline offers stunning views, perfect for photography and relaxation.",
   },
   {
     icon: (
@@ -63,8 +63,8 @@ const commitments = [
         />
       </svg>
     ),
-    title: "Recognition",
-    text: "You work hard as a photographer and we know the importance of being recognized for your work and skills. We're constantly building ways to ensure our photographers get the recognition they deserve.",
+    title: "Surfing and Water Sports",
+    text: "Popular among beginners and pros alike, with lessons and rentals available.",
   },
 ];
 
@@ -91,8 +91,8 @@ const differences = [
         />
       </svg>
     ),
-    title: "Grow as a photographer",
-    text: "Get immediate exposure with your first upload. Our Pulse algorithm surfaces new photographs and photographers, ensuring your photos are seen by the community so you receive valuable feedback on day one.",
+    title: "Foods & Local Vibes",
+    text: "Beach bars and eateries serving fresh seafood and local delicacies.",
   },
   {
     icon: (
@@ -120,8 +120,8 @@ const differences = [
         />
       </svg>
     ),
-    title: "Build your career",
-    text: "Present yourself as a professional. Get hired by displaying your Services, create a Directory listing, showcase the Workshops you're holding, and create Galleries to highlight your work.",
+    title: "Camping and Outdoor Fun",
+    text: "Resorts offer camping grounds where you can sleep under the stars and enjoy beachside bonfires.",
   },
   {
     icon: (
@@ -134,8 +134,8 @@ const differences = [
         />
       </svg>
     ),
-    title: "See your performance",
-    text: "With Statistics and Pulse you get valuable insights into how your photos are performing and how you rank in comparison to other photographers in the community.",
+    title: "Local Homestays & Inns",
+    text: "Affordable options for backpackers and families.",
   },
 ];
 
@@ -144,7 +144,7 @@ export default function About() {
     <div className="about-page">
       {/* ── SECTION 1: Teal commitment section ── */}
       <section className="about-teal">
-        <h2>Our commitment to photographers</h2>
+        <h2>Abouts of San Narciso</h2>
         <div className="about-cards">
           {commitments.map((c) => (
             <div key={c.title} className="about-card-teal">

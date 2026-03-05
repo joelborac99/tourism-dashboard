@@ -1,24 +1,24 @@
 import "./Destination.css";
 import bgImg from "../assets/ggg.jpg";
-import africaImg from "../assets/The palms.png";
-import spainImg from "../assets/San.jpg";
-import cyclingImg from "../assets/mapsannar.png";
+import Thepalms from "../assets/thepalms.jpg";
+import Crystal from "../assets/crystal3.jpg";
+import Tumba2 from "../assets/tumba-tumba.jpg";
 
 const destinations = [
   {
-    img: africaImg,
-    title: "Africa Holidays",
-    desc: "Exotic souks, ancient wonders, unique wildlife and huge sand dunes in seemingly endless deserts",
+    img: Thepalms,
+    title: "The Palms Resorts and Bar",
+    desc: "Is a cozy beachside bed-and-breakfast offering modern amenities like a rooftop pool, jacuzzi, and sea-view rooms, making it a great choice for both relaxation and convenience.",
   },
   {
-    img: spainImg,
-    title: "Spain Holidays",
-    desc: "Soaring mountains, sun-soaked coasts, Moorish heritage and moreish food",
+    img: Crystal,
+    title: "Crystal Beach Holidays",
+    desc: "Crystal Beach Resort in San Narciso, Zambales, combines adventure and relaxation with activities like surfing, camping, kayaking, and paddleboarding.",
   },
   {
-    img: cyclingImg,
-    title: "Cycling Holidays",
-    desc: "Reawaken that long lost childhood sense of freedom or challenge yourself to an adventure",
+    img: Tumba2,
+    title: "Tumba-tumba Holidays",
+    desc: "The shrines called tumba—the Spanish word for tomb—are fully decorated with flowers, images of saints and other appurtenances where the townspeople gather for prayers.",
   },
 ];
 
@@ -30,7 +30,7 @@ function Destination() {
 
       {/* Header */}
       <div className="dest-header">
-        <h1>Hot Destinations</h1>
+        <h1>Best of San Narciso</h1>
         <div className="underline-bar" />
         <p>The first place to look for environmentally friendly holidays</p>
       </div>

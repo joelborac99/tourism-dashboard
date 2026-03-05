@@ -22,7 +22,7 @@
 .logo {
   font-weight: 800;
   font-size: 22px;
-  color: white;
+  color: rgb(64, 64, 64);
   letter-spacing: 1px;
   white-space: nowrap;
 }
@@ -46,7 +46,7 @@
 
 .Linkin {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   font-size: 14px;
   font-weight: 500;
   transition:
@@ -72,7 +72,7 @@
 .search-box {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(14, 14, 14, 0.4);
   padding: 6px 14px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.1);
@@ -82,7 +82,7 @@
 }
 
 .search-box:focus-within {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(11, 11, 11, 0.2);
   border-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -90,13 +90,13 @@
   border: none;
   outline: none;
   background: transparent;
-  color: white;
+  color: rgb(64, 64, 64);
   font-size: 13px;
   width: 140px;
 }
 
 .search-box input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(23, 23, 23, 0.6);
 }
 
 .search-box svg {
