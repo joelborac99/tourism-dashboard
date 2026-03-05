@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import "./Dashboard.css";
 
-const months = ["Jan", "Feb", "Mar", "May", "Jul", "Sep", "Sep", "Nov", "Dec"];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
 const line1 = [38, 42, 40, 48, 52, 55, 60, 65, 72];
 const line2 = [28, 30, 29, 35, 38, 42, 46, 50, 55];
 

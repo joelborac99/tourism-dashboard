@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { key: "chat", label: "Chat Control", icon: "◎" },
 ];
 
-export default function AdminControl() {
+export default function () {
   const [activeNav, setActiveNav] = useState("users");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
