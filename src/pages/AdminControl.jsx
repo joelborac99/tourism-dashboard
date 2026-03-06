@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./AdminControl.css";
 
 const NAV_ITEMS = [
-  { key: "users", label: "Users Control", icon: "◈" },
+  { key: "users", label: "Users Control", icon: "\u25C8" },
   { key: "images", label: "Image Control", icon: "⬡" },
   { key: "chat", label: "Chat Control", icon: "◎" },
+  { key: "title", label: "Title Control", icon: "T" },
 ];
 
 export default function () {
@@ -126,10 +127,9 @@ export default function () {
             </div>
           )}
         </div>
-
         <div className="sidebar-divider" />
 
-        {/* Nav Items */}
+        {/* ``````````````Nav Items`````````````` */}
         <nav className="sidebar-nav">
           {NAV_ITEMS.map((item) => (
             <button
@@ -147,7 +147,7 @@ export default function () {
           ))}
         </nav>
 
-        {/* Bottom */}
+        {/* ``````````````Bottom``````````````````` */}
         <div className="sidebar-footer">
           <div className="sidebar-divider" />
           <button
@@ -170,7 +170,7 @@ export default function () {
         </div>
       </aside>
 
-      {/* ══ MAIN ═════════════════════════════════════════════════ */}
+      {/* =============================== MAIN =================================*/}
       <div className="admin-main">
         {/* Toast */}
         {toast && (
@@ -179,7 +179,7 @@ export default function () {
           </div>
         )}
 
-        {/* Page Header */}
+        {/* --------------------Page Header------------------------ */}
         <div className="admin-header">
           <div>
             <p className="admin-section-eyebrow">
@@ -298,24 +298,24 @@ export default function () {
           </>
         )}
 
-        {/* ── Placeholder panels ── */}
+        {/* ------------------ Placeholder panels ----------------------- */}
         {activeNav === "images" && (
           <div className="admin-placeholder">
-            <div className="ph-icon">⬡</div>
-            <h2>Image Control</h2>
-            <p>Image management features coming soon.</p>
+            <div className="ph-icon"></div>
+            <div className="Images-Container">Home Image</div>
           </div>
         )}
         {activeNav === "chat" && (
           <div className="admin-placeholder">
             <div className="ph-icon">◎</div>
+
             <h2>Chat Control</h2>
             <p>Chat monitoring features coming soon.</p>
           </div>
         )}
       </div>
 
-      {/* ══ MODALS ════════════════════════════════════════════════ */}
+      {/* ============================== MODALS ============================================== */}
 
       {/* Edit */}
       {editingUser && (
